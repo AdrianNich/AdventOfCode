@@ -1,7 +1,7 @@
 import { readFileAsync } from '../fileutils.mjs'
 
 async function readMyFile() {
-  const filePath = '../data/day2data.mjs' // Replace with your file path
+  const filePath = './data/day2data.txt' // Replace with your file path
   const fileContent = await readFileAsync(filePath)
 
   if (fileContent !== undefined) {
@@ -13,5 +13,7 @@ async function readMyFile() {
     console.log('Failed to read the file.')
   }
 }
+
+function calculateGame(game) {}
 
 readMyFile()
