@@ -18,8 +18,26 @@ function calculateGame(game) {
   const splitGame = game.split(':')
   const id = splitGame[0].replace(/Game/, '')
   const rounds = splitGame[1].split(';')
-  const 
-  console.log(colours)
+  const combinedList = rounds.join(',').split(',')
+  let red = []
+  let blue = []
+  let green = []
+  combinedList.map((item) => {
+    if (item.includes('blue')) {
+      const num = Number(item.replace(/\D/g, ''))
+      blue.push(num)
+    }
+    if (item.includes('red')) {
+      const num = Number(item.replace(/\D/g, ''))
+      red.push(num)
+    }
+    if (item.includes('green')) {
+      const num = Number(item.replace(/\D/g, ''))
+      green.push(num)
+    }
+  })
+
+  console.log(blue, green, red)
 }
 
 calculateGame('Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green,')
