@@ -14,6 +14,13 @@ async function readMyFile() {
   }
 }
 
-function calculateGame(game) {}
+function calculateGame(game) {
+  const splitGame = game.split(':')
+  const id = splitGame[0].replace(/Game/, '')
+  const rounds = splitGame[1].split(';')
+  const 
+  console.log(colours)
+}
 
-readMyFile()
+calculateGame('Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green,')
+// readMyFile()
