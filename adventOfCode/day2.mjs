@@ -18,12 +18,11 @@ async function readMyFile() {
 function calculateGame(game) {
   const splitGame = game.split(':')
   let id = Number(splitGame[0].replace(/Game/, ''))
-  const rounds = splitGame[1].split(';')
-  const combinedList = rounds.join(',').split(',')
+  const rounds = splitGame[1].split(';').join(',').split(',')
   let red = []
   let blue = []
   let green = []
-  combinedList.map((item) => {
+  rounds.map((item) => {
     if (item.includes('blue')) {
       const num = Number(item.replace(/\D/g, ''))
       blue.push(num)
@@ -37,24 +36,19 @@ function calculateGame(game) {
       green.push(num)
     }
   })
-  red.map((x) => {
-    if (x > 12) {
-      id = 0
-      return
-    }
-  })
-  blue.map((x) => {
-    if (x > 14) {
-      id = 0
-      return
-    }
-  })
-  green.map((x) => {
-    if (x > 13) {
-      id = 0
-      return
-    }
-  })
+
+  function removeInvalidGames(array, limit) {
+    array.map((game) => {
+      if (game > limit) {
+        id = 0
+        return
+      }
+    })
+  }
+
+  removeInvalidGames(red, 12)
+  removeInvalidGames(blue, 14)
+  removeInvalidGames(green, 13)
   return id
 }
 
@@ -67,3 +61,9 @@ function calculateTotal(game) {
 }
 calculateGame('Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green,')
 // readMyFile()
+
+const data = await readFileAsync('./data/day2data.txt')
+
+//data.map((x) => console.log(x))
+
+console.log(calculateTotal(data))
