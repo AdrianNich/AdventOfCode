@@ -14,5 +14,5 @@ const sampleData = `467..114..
 
 test('it finds the correct sum', () => {
   const answer = findAnswer(sampleData)
-  expect(answer).toBe(4361)
+  expect(answer).toBe(467835)
 })
