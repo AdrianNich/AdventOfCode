@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import { calculateGame } from '../adventOfCode/day2.mjs'
+import { calculateGame, calculateTotal } from '../adventOfCode/day2.mjs'
 
 const game1 = 'Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green'
 const game2 = 'Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue'

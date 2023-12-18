@@ -1,5 +1,5 @@
 import { readFileAsync } from '../fileutils.mjs'
-export { calculateGame }
+export { calculateGame, calculateTotal }
 
 async function readMyFile() {
   const filePath = './data/day2data.txt' // Replace with your file path
@@ -41,5 +41,8 @@ function calculateGame(game) {
   console.log(blue, green, red)
 }
 
+function calculateTotal(game) {
+  return 0
+}
 calculateGame('Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green,')
 // readMyFile()
