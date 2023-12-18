@@ -1,5 +1,5 @@
-import { data } from '../data/day1data.mjs'
 export default { calculateValue }
+import { readFileAsync } from '../fileutils.mjs'
 
 function calculateValue(str) {
   let result = str
@@ -36,6 +36,9 @@ const testData = [
   'zoneight234',
   '7pqrstsixteen',
 ]
+let data = await readFileAsync('./data/day1data.txt')
+data = data.split('\n')
+// console.log(data)
 const test = data.map((x) => calculateValue(x))
 // const test = calculateValue(data[0])
 const total = test.reduce((acc, curr) => acc + curr, 0)
