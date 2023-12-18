@@ -38,3 +38,29 @@ describe('CalculateSum works out the total', () => {
     expect(sampleValue).toBe(8)
   })
 })
+
+describe('Correctly calculates day 2 part 2 game lines', () => {
+  test('calculateValue works out value of Game1', () => {
+    const game1Value = calculatePower(game1)
+    expect(game1Value).toBe(48)
+  })
+  test('calculateValue works out value of Game2', () => {
+    const game1Value = calculatePower(game2)
+    expect(game1Value).toBe(12)
+  })
+  test('calculateValue works out value of Game3', () => {
+    const game1Value = calculatePower(game3)
+    expect(game1Value).toBe(1560)
+  })
+  test('calculateValue works out value of Game4', () => {
+    const game1Value = calculatePower(game4)
+    expect(game1Value).toBe(630)
+  })
+})
+
+describe('CalculateSum works out the total for part 2', () => {
+  test('Use calculateSum to work out sum', () => {
+    const sampleValue = calculateTotal(fullSample)
+    expect(sampleValue).toBe(2286)
+  })
+})
