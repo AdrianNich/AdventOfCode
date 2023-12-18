@@ -37,29 +37,37 @@ function calculateGame(game) {
     }
   })
 
-  function removeInvalidGames(array, limit) {
-    array.map((game) => {
-      if (game > limit) {
-        id = 0
-        return
-      }
-    })
-  }
+  //part1
+  //   function removeInvalidGames(array, limit) {
+  //     array.map((game) => {
+  //       if (game > limit) {
+  //         id = 0
+  //         return
+  //       }
+  //     })
+  //   }
 
-  removeInvalidGames(red, 12)
-  removeInvalidGames(blue, 14)
-  removeInvalidGames(green, 13)
-  return id
+  //   removeInvalidGames(red, 12)
+  //   removeInvalidGames(blue, 14)
+  //   removeInvalidGames(green, 13)
+  //   return id
+
+  const blueHigh = Math.max(...blue)
+  const redHigh = Math.max(...red)
+  const greenHigh = Math.max(...green)
+
+  return blueHigh * redHigh * greenHigh
 }
 
 function calculateTotal(game) {
   const splitGames = game.split('\n')
-  const gameValues = []
-  splitGames.map((game) => gameValues.push(calculateGame(game)))
-  const total = gameValues.reduce((acc, curr) => acc + curr, 0)
+  //   const gameValues = []
+  let total = 0
+  splitGames.map((game) => (total += calculateGame(game)))
+  //   const total = gameValues.reduce((acc, curr) => acc + curr, 0)
   return total
 }
-calculateGame('Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green,')
+// calculateGame('Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green,')
 // readMyFile()
 
 const data = await readFileAsync('./data/day2data.txt')
