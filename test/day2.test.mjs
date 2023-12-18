@@ -32,7 +32,7 @@ describe('Correctly calculates day 2 part one game lines', () => {
   })
 })
 
-describe.skip('CalculateSum works out the total', () => {
+describe('CalculateSum works out the total', () => {
   test('Use calculateSum to work out sum', () => {
     const sampleValue = calculateTotal(fullSample)
     expect(sampleValue).toBe(8)

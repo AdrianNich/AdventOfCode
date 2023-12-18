@@ -17,7 +17,7 @@ async function readMyFile() {
 
 function calculateGame(game) {
   const splitGame = game.split(':')
-  const id = splitGame[0].replace(/Game/, '')
+  let id = Number(splitGame[0].replace(/Game/, ''))
   const rounds = splitGame[1].split(';')
   const combinedList = rounds.join(',').split(',')
   let red = []
@@ -37,12 +37,33 @@ function calculateGame(game) {
       green.push(num)
     }
   })
-
-  console.log(blue, green, red)
+  red.map((x) => {
+    if (x > 12) {
+      id = 0
+      return
+    }
+  })
+  blue.map((x) => {
+    if (x > 14) {
+      id = 0
+      return
+    }
+  })
+  green.map((x) => {
+    if (x > 13) {
+      id = 0
+      return
+    }
+  })
+  return id
 }
 
 function calculateTotal(game) {
-  return 0
+  const splitGames = game.split('\n')
+  const gameValues = []
+  splitGames.map((game) => gameValues.push(calculateGame(game)))
+  const total = gameValues.reduce((acc, curr) => acc + curr, 0)
+  return total
 }
 calculateGame('Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green,')
 // readMyFile()
