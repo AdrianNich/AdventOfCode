@@ -2,42 +2,17 @@ import { data } from '../data/day1data.mjs'
 export default { calculateValue }
 
 function calculateValue(str) {
-  let result = replacer(str)
-  function replacer(str) {
-    let test = str
-    if (test.includes('one')) {
-      test = test.replaceAll(/one/g, 'o1e')
-    }
-    if (test.includes('two')) {
-      test = test.replaceAll(/two/g, 't2o')
-    }
-    if (test.includes('three')) {
-      test = test.replaceAll(/three/g, 't3e')
-    }
-    if (test.includes('four')) {
-      test = test.replaceAll(/four/g, 'f4')
-    }
-    if (test.includes('five')) {
-      test = test.replaceAll(/five/g, 'f5e')
-    }
-    if (test.includes('six')) {
-      test = test.replaceAll(/six/g, 's6')
-    }
-    if (test.includes('seven')) {
-      test = test.replaceAll(/seven/g, 's7n')
-    }
-    if (test.includes('eight')) {
-      test = test.replaceAll(/eight/g, 'e8t')
-    }
-    if (test.includes('nine')) {
-      test = test.replaceAll(/nine/g, 'n9e')
-    }
-    if (test.includes('zero')) {
-      test = test.replaceAll(/zero/g, 'z0o')
-    }
-    // console.log(test)
-    return test
-  }
+  let result = str
+    .replace(/one/g, 'o1e')
+    .replace(/two/g, 't2o')
+    .replace(/three/g, 't3e')
+    .replace(/four/g, 'f4r')
+    .replace(/five/g, 'f5e')
+    .replace(/six/g, 's6x')
+    .replace(/seven/g, 's7n')
+    .replace(/eight/g, 'e8t')
+    .replace(/nine/g, 'n9e')
+    .replace(/zero/g, 'z0o')
   const num = findNumbers(result)
 
   const separateNum = num.toString().split('')
