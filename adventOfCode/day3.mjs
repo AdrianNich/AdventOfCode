@@ -5,6 +5,7 @@
 
 // split at \n
 // [ 0, 1, 2].map((line, index) => function(line, index))
+import { readFileAsync } from '../fileutils.mjs'
 export { findAnswer }
 const sampleData = `467..114..
 ...*......
@@ -16,12 +17,13 @@ const sampleData = `467..114..
 ......755.
 ...$.*....
 .664.598..`
+const data = await readFileAsync('./data/day3data.txt')
 
-const separatedData = sampleData.split('\n')
+const separatedData = data.split('\n')
 
 //function to find and add the valid numbers in each line
 //still need to address what if index is 0 for prior and next index -1 lines
-function getValidNumbers(line, lineIndex) {
+function getValidNumbers(line, lineIndex, separatedData) {
   const lineArray = line.split('')
   let lineIndexes = []
   const finalLineArray = []
@@ -40,6 +42,9 @@ function getValidNumbers(line, lineIndex) {
   const validIndexes = []
   finalLineArray.map((array) => {
     array.map((index) => {
+      if (validIndexes.includes(array)) {
+        return
+      }
       if (lineIndex !== 0) {
         if (validIndexes.includes(array)) {
           return
@@ -49,7 +54,7 @@ function getValidNumbers(line, lineIndex) {
           priorLine[index - 1] !== '.' &&
           isNaN(Number(priorLine[index - 1]))
         ) {
-          console.log(priorLine[index - 1], index, 1)
+          //   console.log(priorLine[index - 1], index, 1)
           validIndexes.push(array)
           return
         }
@@ -58,7 +63,7 @@ function getValidNumbers(line, lineIndex) {
           priorLine[index] !== '.' &&
           isNaN(Number(priorLine[index]))
         ) {
-          console.log(priorLine[index], index, 2)
+          //   console.log(priorLine[index], index, 2)
           validIndexes.push(array)
           return
         }
@@ -67,7 +72,7 @@ function getValidNumbers(line, lineIndex) {
           priorLine[index + 1] !== '.' &&
           isNaN(Number(priorLine[index + 1]))
         ) {
-          console.log(priorLine[index + 1], index)
+          //   console.log(priorLine[index + 1], index)
           validIndexes.push(array)
           return
         }
@@ -78,7 +83,7 @@ function getValidNumbers(line, lineIndex) {
           nextLine[index - 1] !== '.' &&
           isNaN(Number(nextLine[index - 1]))
         ) {
-          console.log(nextLine[index - 1], index, 4)
+          //   console.log(nextLine[index - 1], index, 4)
           validIndexes.push(array)
           return
         }
@@ -87,7 +92,7 @@ function getValidNumbers(line, lineIndex) {
           nextLine[index] !== '.' &&
           isNaN(Number(nextLine[index]))
         ) {
-          console.log(nextLine[index], index, 5)
+          //   console.log(nextLine[index], index, 5)
           validIndexes.push(array)
           return
         }
@@ -96,7 +101,7 @@ function getValidNumbers(line, lineIndex) {
           nextLine[index + 1] !== '.' &&
           isNaN(Number(nextLine[index + 1]))
         ) {
-          console.log(nextLine[index + 1], index, 6)
+          //   console.log(nextLine[index + 1], index, 6)
           validIndexes.push(array)
           return
         }
@@ -105,7 +110,7 @@ function getValidNumbers(line, lineIndex) {
           lineArray[index - 1] !== '.' &&
           isNaN(Number(lineArray[index - 1]))
         ) {
-          console.log(lineArray[index - 1], index, 7)
+          //   console.log(lineArray[index - 1], index, 7)
           validIndexes.push(array)
           return
         }
@@ -114,7 +119,7 @@ function getValidNumbers(line, lineIndex) {
           lineArray[index + 1] !== '.' &&
           isNaN(Number(lineArray[index + 1]))
         ) {
-          console.log(lineArray[index + 1], index, 8)
+          //   console.log(lineArray[index + 1], index, 8)
           validIndexes.push(array)
           return
         }
@@ -129,19 +134,21 @@ function getValidNumbers(line, lineIndex) {
     }
     validNumbers.push(Number(combinedNumber))
   })
-  console.log(validNumbers)
+  //   console.log(validNumbers)
   const numSum = validNumbers.reduce((acc, curr) => (acc += curr), 0)
   return numSum
 }
 
 //function to call other function on the data and add it up
 function findAnswer(data) {
-  const separatedData2 = data.split('\n')
+  const separatedData = data.split('\n')
   let total = 0
-  separatedData2.map((line, index) => {
-    total += getValidNumbers(line, index)
+  separatedData.map((line, index) => {
+    total += getValidNumbers(line, index, separatedData)
   })
   return total
 }
 
 // console.log(getIndexes(separatedData[6], 6))
+
+console.log('answer', findAnswer(data))
