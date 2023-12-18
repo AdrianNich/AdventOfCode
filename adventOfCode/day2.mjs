@@ -1,4 +1,5 @@
 import { readFileAsync } from '../fileutils.mjs'
+export { calculateGame }
 
 async function readMyFile() {
   const filePath = './data/day2data.txt' // Replace with your file path
