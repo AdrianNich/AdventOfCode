@@ -13,6 +13,7 @@ function calculateValue(str) {
     .replace(/eight/g, 'e8t')
     .replace(/nine/g, 'n9e')
     .replace(/zero/g, 'z0o')
+
   const num = findNumbers(result)
 
   const separateNum = num.toString().split('')
