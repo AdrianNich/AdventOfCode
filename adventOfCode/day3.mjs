@@ -7,7 +7,8 @@
 // [ 0, 1, 2].map((line, index) => function(line, index))
 import { readFileAsync } from '../fileutils.mjs'
 export { findAnswer }
-const sampleData = `467..114..
+const sampleData = `
+467..114..
 ...*......
 ..35..633.
 ......#...

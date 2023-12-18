@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'
-import { findAnswer } from '../adventOfCode/day3.mjs'
+import { findAnswer } from '../adventOfCode/day3b.mjs'
 
 const sampleData = `467..114..
 ...*......
