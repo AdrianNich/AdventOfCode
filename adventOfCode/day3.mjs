@@ -19,8 +19,6 @@ const sampleData = `467..114..
 .664.598..`
 const data = await readFileAsync('./data/day3data.txt')
 
-const separatedData = data.split('\n')
-
 //function to find and add the valid numbers in each line
 //still need to address what if index is 0 for prior and next index -1 lines
 function getValidNumbers(line, lineIndex, separatedData) {
@@ -28,8 +26,10 @@ function getValidNumbers(line, lineIndex, separatedData) {
   let lineIndexes = []
   const finalLineArray = []
   lineArray.map((char, i) => {
+    // if it's a number push to lineIndexes
     if (!isNaN(Number(char))) {
       lineIndexes.push(i)
+      //if the next char is not a number, push lineIndexes to finalLineArray and reset lineIndexes to empty array
       if (isNaN(lineArray[i + 1])) {
         finalLineArray.push(lineIndexes)
         lineIndexes = []
@@ -151,4 +151,4 @@ function findAnswer(data) {
 
 // console.log(getIndexes(separatedData[6], 6))
 
-console.log('answer', findAnswer(data))
+console.log('answer', findAnswer(sampleData))

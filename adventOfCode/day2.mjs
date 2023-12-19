@@ -4,7 +4,10 @@ export { calculateGame, calculateTotal }
 function calculateGame(game) {
   const splitGame = game.split(':')
   let id = Number(splitGame[0].replace(/Game/, ''))
+  //   console.log('split ;', splitGame[1].split(';'))
+  //   console.log(' join ,', splitGame[1].split(';').join(','))
   const rounds = splitGame[1].split(';').join(',').split(',')
+  //   console.log('rounds', rounds)
   let red = []
   let blue = []
   let green = []
